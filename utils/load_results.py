@@ -13,6 +13,7 @@ def load_accuracies(all_paths, n_runs=5, n_epochs=300, val_steps=10, context_una
                    'cu_train_message_lengths': [], 'cu_val_message_lengths': [],
                   }
 
+    file_paths = []
     for path_idx, path in enumerate(all_paths):
 
         train_accs = []
@@ -32,7 +33,6 @@ def load_accuracies(all_paths, n_runs=5, n_epochs=300, val_steps=10, context_una
 
         file_name = "loss_and_metrics"
         file_extension = "pkl"
-
         for run in range(n_runs):
 
             run_path = str(run)
@@ -40,6 +40,7 @@ def load_accuracies(all_paths, n_runs=5, n_epochs=300, val_steps=10, context_una
             # context-aware (standard)
             if not context_unaware:
                 file_path = f"{path}/{context_aware_path}/{run_path}/{file_name}.{file_extension}"
+                file_paths.append(file_path)
                 data = pickle.load(open(file_path, 'rb'))
                 # train and validation accuracy
                 lists = sorted(data['metrics_train0'].items())
@@ -62,6 +63,7 @@ def load_accuracies(all_paths, n_runs=5, n_epochs=300, val_steps=10, context_una
             # context-unaware
             elif context_unaware:
                 file_path = f"{path}/{context_unaware_path}/{run_path}/{file_name}.{file_extension}"
+                file_paths.append(file_path)
                 cu_data = pickle.load(open(file_path, 'rb'))
                 # accuracies
                 lists = sorted(cu_data['metrics_train0'].items())
@@ -108,7 +110,7 @@ def load_accuracies(all_paths, n_runs=5, n_epochs=300, val_steps=10, context_una
     for key in result_dict.keys():
         result_dict[key] = np.array(result_dict[key])
 
-    return result_dict
+    return result_dict, file_paths
 
 def load_entropies(all_paths, n_runs=5, context_unaware=False, verbose=False):
     """ loads all entropy scores into a dictionary"""

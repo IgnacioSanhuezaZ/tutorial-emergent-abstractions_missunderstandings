@@ -30,7 +30,6 @@ class Sender(nn.Module):
         n_obj = x.shape[1]
         n_features = x.shape[2]
         n_targets = int(n_obj / 2)
-
         # embed target objects:
         targets = x[:, :n_targets]
         targets_flat = targets.reshape(batch_size, n_targets * n_features)

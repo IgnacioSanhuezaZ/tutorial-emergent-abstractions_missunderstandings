@@ -1,5 +1,3 @@
-# code inspired by https://github.com/XeniaOhmer/hierarchical_reference_game/blob/master/dataset.py
-
 import torch
 import torch.nn.functional as F
 import itertools

@@ -11,6 +11,8 @@ parser.add_argument('--dimensions', nargs="*", type=int, default=[3, 3, 3],
                     help='Number of features for every perceptual dimension')
 parser.add_argument('--game_size', type=int, default=10,
                     help='Number of target/distractor objects')
+parser.add_argument('--sample_size', type=int, default=10,
+                    help='Number of sample to get')
 parser.add_argument('--scaling_factor', type=int, default=10,
                     help='Scaling factor for dataset generation.')
 parser.add_argument("--save", type=bool, default=True)
@@ -25,8 +27,8 @@ data_set = DataSet(args.dimensions,
                    game_size=args.game_size,
                    scaling_factor=args.scaling_factor,
                    device='cpu')
-
-path = ('data/dim(' + str(len(args.dimensions)) + ',' + str(args.dimensions[0]) + ')' + sample + '_sf' +
+sample = args.sample_size
+path = ('data/dim(' + str(len(args.dimensions)) + ',' + str(args.dimensions[0]) + ')' + str(sample) + '_sf' +
         str(args.scaling_factor) + '.ds')
 
 if args.save:

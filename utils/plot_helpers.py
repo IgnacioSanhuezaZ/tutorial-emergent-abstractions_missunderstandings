@@ -23,6 +23,7 @@ def plot_training_trajectory(results_train,
 
     for i, plot_idx in enumerate(plot_indices):
         plt.subplot(plot_shape[0], plot_shape[1], plot_idx)
+        print(results_train)
         if message_length_plot:
             for j in range(len(message_length_train[i])):
                 if j == 0:

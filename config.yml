@@ -1,10 +1,20 @@
-save: False # save results
+save: True # save results
 learning_rate: 0.001
 batch_size: 32
-n_epochs: 10
-load_dataset: '' # dataset can be created with pickle_ds.py and then loaded
-attributes: 3 # number of attributes of objects
-values: 4 # number of values of objects
+n_epochs: 15
+load_dataset: 'data/' # dataset can be created with pickle_ds.py and then loaded
+save_datasets: True
+attributes: [
+              3,
+              4,
+              8
+
+] # number of attributes of objects
+values: [
+          4,
+          3,
+          3
+]# number of values of objects
 game_size: 10 # number of objects that together form a target concept / context
 scaling_factor: 10 # number of concepts (randomly composed of objects) in the dataset
 vocab_size_user: 16 # size of the vocabulary
