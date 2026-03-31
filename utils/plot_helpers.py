@@ -53,10 +53,10 @@ def plot_training_trajectory(results_train,
         if xlim:
             plt.xlim(xlim)
 
-    if loss_plot:
-        plt.suptitle('loss', x=0.53, fontsize=15)
-    elif message_length_plot:
-        plt.suptitle('message length', x=0.53, fontsize=15)
-    else:
-        plt.suptitle('accuracy', x=0.53, fontsize=15)
+    # if loss_plot:
+    #     plt.suptitle('loss', x=0.53, fontsize=15)
+    # elif message_length_plot:
+    #     plt.suptitle('message length', x=0.53, fontsize=15)
+    # else:
+    #     plt.suptitle('accuracy', x=0.53, fontsize=15)
     plt.tight_layout()
