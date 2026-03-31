@@ -155,8 +155,10 @@ def load_entropies(all_paths, n_runs=5, context_unaware=False, verbose=False):
         result_dict['NMI_concept_x_context'].append(NMIs_conc_x_cont)
         result_dict['consistency_concept_x_context'].append(consistency_conc_x_cont)
         result_dict['effectiveness_concept_x_context'].append(effectiveness_conc_x_cont)
+        for key in result_dict.keys():
+            if len(result_dict[key]) == 1:
+                result_dict[key] = np.array(result_dict[key][0])
+            else:
+                result_dict[key] = np.array(result_dict[key])
 
-    for key in result_dict.keys():
-        result_dict[key] = np.array(result_dict[key])
-
-    return result_dict
+        return result_dict
